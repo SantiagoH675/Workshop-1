@@ -1,4 +1,4 @@
-﻿namespace Time;
+﻿namespace Actividad;
 
 public class Time
 {
