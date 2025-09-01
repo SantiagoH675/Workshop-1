@@ -9,14 +9,14 @@ public class Time
 
 
 
-    public Time(int hour, int millisecond, int minute, int second)
+    /*blic Time()
     {
 
-        Hour = hour;
-        Millisecond = millisecond;
-        Minute = minute;
-        Second = second;
-    }
+        Hour = 0;
+        Millisecond = 0;
+        Minute = 0;
+        Second = 0;
+    }*/
 
     public int Hour
     {
@@ -52,12 +52,58 @@ public class Time
             _second = ValidSecond(value);
         }
     }
+    public Time(int hour=): this(hour, 0, 0, 0) { }
+    public Time(int hour, int minute) : this(hour, minute, 0, 0) { }
+    public Time(int hour, int minute, int second) : this(hour, minute, second, 0) { }
+    public Time(int hour, int minute, int second, int millisecond)
+    {
+        Hour = hour;
+        Millisecond = millisecond;
+        Minute = minute;
+        Second = second;
+
+    }
+    
+    public object add(Time t3)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    /*public override string ToString()
+    {
+        return $"{Year:0000}/{Month:00}/{Day:00}";
+    }
+
+    private bool IsLeapYear(int year)
+    {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }*/
+    public bool IsOtherDay(Time t4)
+    {
+        throw new NotImplementedException();
+    }
+
+    public object toMillisecond()
+    {
+        throw new NotImplementedException();
+    }
+
+    public object toMinutes()
+    {
+        throw new NotImplementedException();
+    }
+
+    public object toSecond()
+    {
+        throw new NotImplementedException();
+    }
 
     private int ValidHour(int hour)
     {
         if (hour < 0 || hour > 23)
         {
-            throw new Exception("Hour must be between 0 and 23.");
+            throw new Exception($"Hour:{hour} must be between 0 and 23.");
         }
         return hour;
     }
@@ -65,7 +111,7 @@ public class Time
     {
         if (millisecond < 0 || millisecond > 999)
         {
-            throw new Exception("Millisecond must be between 0 and 999.");
+            throw new Exception($"Millisecond:{millisecond} must be between 0 and 999.");
         }
         return millisecond;
     }
@@ -73,7 +119,7 @@ public class Time
     {
         if (minute < 0 || minute > 59)
         {
-            throw new Exception("Minute must be between 0 and 59.");
+            throw new Exception($"Minute: {minute} must be between 0 and 59.");
         }
         return minute;
     }
@@ -81,7 +127,7 @@ public class Time
     {
         if (second < 0 || second > 59)
         {
-            throw new Exception("Second must be between 0 and 59.");
+            throw new Exception($"Second: {second} must be between 0 and 59.");
         }
         return second;
 
