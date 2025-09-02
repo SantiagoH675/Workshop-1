@@ -70,7 +70,7 @@ public class Time
         => ((long)Hour * 60 + (long)Minute);
     public object add(Time other)
     {
-        throw new NotImplementedException();
+        long totalMilliseconds = ToMilliseconds() + other.ToMilliseconds();
     }
 
 
