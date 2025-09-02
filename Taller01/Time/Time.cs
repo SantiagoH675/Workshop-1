@@ -8,8 +8,7 @@ public class Time
     private int _second;
 
 
-
-    /*blic Time()
+    /*public Time()
     {
 
         Hour = 0;
@@ -52,10 +51,10 @@ public class Time
             _second = ValidSecond(value);
         }
     }
-    public Time(int hour=): this(hour, 0, 0, 0) { }
+    public Time(int hour): this(hour, 0, 0, 0) { }
     public Time(int hour, int minute) : this(hour, minute, 0, 0) { }
     public Time(int hour, int minute, int second) : this(hour, minute, second, 0) { }
-    public Time(int hour, int minute, int second, int millisecond)
+    public Time(int hour = 0, int minute = 0, int second = 0, int millisecond = 0)
     {
         Hour = hour;
         Millisecond = millisecond;
@@ -63,8 +62,13 @@ public class Time
         Second = second;
 
     }
-    
-    public object add(Time t3)
+    public long ToMilliseconds()
+        => ((long)Hour * 3600 + (long)Minute * 60 + (long)Second) * 1000 + Millisecond;
+    public long ToSeconds()
+        => ((long)Hour * 3600 + (long)Minute * 60 + (long)Second);
+    public long ToMinutes()
+        => ((long)Hour * 60 + (long)Minute);
+    public object add(Time other)
     {
         throw new NotImplementedException();
     }
@@ -84,17 +88,17 @@ public class Time
         throw new NotImplementedException();
     }
 
-    public object toMillisecond()
+    public object ToMillisecond()
     {
         throw new NotImplementedException();
     }
 
-    public object toMinutes()
+    public object ToMinutes()
     {
         throw new NotImplementedException();
     }
 
-    public object toSecond()
+    public object ToSecond()
     {
         throw new NotImplementedException();
     }
