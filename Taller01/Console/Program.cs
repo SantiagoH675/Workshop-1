@@ -16,7 +16,7 @@ try
         Console.WriteLine($"\tMilliseconds: {time.ToMillisecond(),15:NO}");
         Console.WriteLine($"\tSeconds     : {time.ToSecond(),15:NO}");
         Console.WriteLine($"\tMinutes     : {time.ToMinutes(),15:NO}");
-        Console.WriteLine($"\t.add        : {time.add(t3),15:NO}");
+        Console.WriteLine($"\t.add        : {time.Add(t3),15:NO}");
         Console.WriteLine($"\tIs other day: {time.IsOtherDay(t4)}");
         Console.WriteLine();
     }
