@@ -64,7 +64,7 @@ public class Time
 
     public long ToMilliseconds()
     {
-        return ((long)Hour * 3600 + (long)Minute * 60 + (long)Second) * 1000 + Millisecond;
+        return (long)Hour * 3600000 + (long)Minute * 60000 + (long)Second * 1000 + Millisecond;
     }
         
     public long ToSeconds()
@@ -77,7 +77,7 @@ public class Time
         return ToMilliseconds() / 60000;
     }
         
-    public object Add(Time other)
+    public Time Add(Time other)
     {
         long totalMilliseconds = ToMilliseconds() + other.ToMilliseconds();
         int  New_hour  = (int)((totalMilliseconds / 3600000) % 24);
@@ -87,31 +87,27 @@ public class Time
 
         return new Time(New_hour, New_minute, New_second, New_milliseconds);
     }
-
-
-    public override string ToString()
+    public bool IsOtherDay(Time other)
     {
-        return $"{:0000}/{Month:00}/{Day:00}";
+        return ToMilliseconds() + other.ToMilliseconds() >= 86400000;
     }
-
     
-    public bool IsOtherDay()
+   public override string ToString()
     {
-        throw new NotImplementedException();
-    }
+        if (Hour == 0 && Minute == 0 && Second == 0 && Millisecond == 0)
+        {
+            return "00:00:00.000 AM";
+        }
 
+        int displayHour = Hour % 12;
+        if (displayHour == 0) displayHour = 12; 
+
+        string amPm = Hour < 12 ? "AM" : "PM";
+
+        return $"{displayHour:00}:{Minute:00}:{Second:00}.{Millisecond:000} {amPm}";
+
+    }
     
-
-    public object ToMinutes()
-    {
-        throw new NotImplementedException();
-    }
-
-    public object ToSecond()
-    {
-        throw new NotImplementedException();
-    }
-
     private int ValidHour(int hour)
     {
         if (hour < 0 || hour > 23)
@@ -145,5 +141,5 @@ public class Time
         }
         return millisecond;
     }
-   
+
 }
