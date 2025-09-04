@@ -99,12 +99,12 @@ public class Time
             return "00:00:00.000 AM";
         }
 
-        int displayHour = Hour % 12;
-        if (displayHour == 0) displayHour = 12; 
+        int shownHour = Hour % 12;
+        if (shownHour == 0) shownHour = 12; 
 
         string amPm = Hour < 12 ? "AM" : "PM";
 
-        return $"{displayHour:00}:{Minute:00}:{Second:00}.{Millisecond:000} {amPm}";
+        return $"{shownHour:00}:{Minute:00}:{Second:00}.{Millisecond:000} {amPm}";
 
     }
     
